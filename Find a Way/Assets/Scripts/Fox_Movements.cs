@@ -9,7 +9,9 @@ public class Fox_Movements : MonoBehaviour
     CharacterController _Char;
     private float gravityValue = -9.81f;
     bool left;
-     bool right;
+    bool right;
+    bool sault;
+    bool jump;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +26,13 @@ public class Fox_Movements : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         left = Input.GetKey(KeyCode.A);
         right = Input.GetKey(KeyCode.D);
+        sault = Input.GetKey(KeyCode.Q);
+        jump = Input.GetKey(KeyCode.Space);
         anim.SetFloat("running" , y);
         anim.SetBool("Left" , left);
         anim.SetBool("Right" , right);
+        anim.SetBool("Sault" , sault);
+        anim.SetBool("Jump" , jump);
 
         //Vector3 movement = new Vector3(x, 0,y);
         //movement.y += gravityValue* Time.deltaTime;
