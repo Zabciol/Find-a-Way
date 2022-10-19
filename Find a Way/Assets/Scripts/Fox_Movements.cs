@@ -7,7 +7,7 @@ public class Fox_Movements : MonoBehaviour
 
     Animator anim;
     CharacterController _Char;
-    private float gravityValue = -9.81f;
+    private float gravityValue = -20.81f;
     bool left;
     bool right;
     bool sault;
@@ -34,8 +34,8 @@ public class Fox_Movements : MonoBehaviour
         anim.SetBool("Sault" , sault);
         anim.SetBool("Jump" , jump);
 
-        //Vector3 movement = new Vector3(x, 0,y);
-        //movement.y += gravityValue* Time.deltaTime;
-       // _Char.Move(movement * Time.deltaTime);
+        Vector3 movement = new Vector3(0, 0,0);
+        movement.y += gravityValue* Time.deltaTime;
+       _Char.Move(movement * Time.deltaTime);
     }
 }
