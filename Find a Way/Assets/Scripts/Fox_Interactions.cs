@@ -19,6 +19,11 @@ public class Fox_Interactions : MonoBehaviour
             other.gameObject.SetActive(false);
             GameManager.Instance.FoodColect();
         }
+        if(other.gameObject.tag == "CarDrive")
+        {
+            Debug.Log("Collide With Car");
+            UI_Manager.Instance.YouLoseDisplay();
+        }
        
 
 
