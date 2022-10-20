@@ -29,7 +29,7 @@ public class Fox_Interactions : MonoBehaviour
         if(other.gameObject.tag == "Brother")
         {
             Debug.Log("WIN");
-            
+            UI_Manager.Instance.YouWonDisplay();
         }
        
 
