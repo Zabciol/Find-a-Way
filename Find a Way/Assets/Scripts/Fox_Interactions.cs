@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fox_Interactions : MonoBehaviour
 {
     // Start is called before the first frame update
-   public GameObject ParticleToSpawn;
+    public GameObject ParticleToSpawn;
     void Start()
     {
     }
@@ -41,6 +41,7 @@ public class Fox_Interactions : MonoBehaviour
         {
             Debug.Log("WIN");
             UI_Manager.Instance.YouWonDisplay();
+            Instantiate(ParticleToSpawn, other.transform.position, other.transform.rotation);
         }
        
 
