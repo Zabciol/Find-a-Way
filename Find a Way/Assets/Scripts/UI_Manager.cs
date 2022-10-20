@@ -66,8 +66,8 @@ public class UI_Manager : MonoBehaviour
     }
 
     public void YouWonDisplay(){
-        Time.timeScale = 0;
         YouWonText.text = "YOU WON";
+        Time.timeScale = 0;
     }
 
 
