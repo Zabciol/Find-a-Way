@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UI_Manager : MonoBehaviour
 {
     public GameObject PauseUI;
     public GameObject YouLoseText;
+    public GameObject RestartBtn;
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI YouWonText;
     public float time;
@@ -17,19 +19,21 @@ public class UI_Manager : MonoBehaviour
 
      private void Awake() {
         Instance = this;
-        PauseUI =  GameObject.Find("ButtonPause");
-        YouLoseText = GameObject.Find("YouLoseTEXT");
-        YouWonText = GameObject.Find("YouWonText").GetComponent<TextMeshProUGUI>();
+        
     }
     // Start is called before the first frame update
     void Start()
     {
-         PauseUI.SetActive(false);
-         YouLoseText.SetActive(false);
-
-         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
-         time = 30;
-         YouWonText.text = "";
+        PauseUI =  GameObject.Find("ButtonPause");
+        YouLoseText = GameObject.Find("YouLoseTEXT");
+        RestartBtn = GameObject.Find("RestartBtn");
+        YouWonText = GameObject.Find("YouWonText").GetComponent<TextMeshProUGUI>();
+        PauseUI.SetActive(false);
+        YouLoseText.SetActive(false);
+        RestartBtn.SetActive(false);
+        Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+        time = 30;
+        YouWonText.text = "";
     }
 
     // Update is called once per frame
@@ -58,6 +62,7 @@ public class UI_Manager : MonoBehaviour
     public void YouLoseDisplay(){
         Time.timeScale = 0;
         YouLoseText.SetActive(true);
+        RestartBtn.SetActive(true);
     }
 
     public void YouWonDisplay(){
@@ -89,6 +94,11 @@ public class UI_Manager : MonoBehaviour
 
     public void AddTime() {
         time+= 10;
+    }
+
+    public void Restart() {
+         SceneManager.LoadScene(1, LoadSceneMode.Single);
+         Time.timeScale = 1;
     }
     
 }

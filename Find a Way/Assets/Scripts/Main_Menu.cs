@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject NextLevel;
+     public GameObject NextLevel;
     // Start is called before the first frame update
+     public static UI_Manager Instance;
+
+     
     void Start()
     {
         NextLevel =  GameObject.Find("PlayBtn");
