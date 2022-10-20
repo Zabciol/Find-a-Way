@@ -21,6 +21,17 @@ public class Fox_Interactions : MonoBehaviour
             UI_Manager.Instance.AddTime();
             
         }
+        if(other.gameObject.tag == "FoodUnhealthy")
+        {
+            Debug.Log("Collide With UnHealthy Food");
+             other.gameObject.SetActive(false);
+             UI_Manager.Instance.RemoveTime();
+
+        }
+
+
+
+
         if(other.gameObject.tag == "CarDrive")
         {
             Debug.Log("Collide With Car");

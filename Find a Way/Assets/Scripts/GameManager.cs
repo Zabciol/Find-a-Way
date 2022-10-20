@@ -30,6 +30,5 @@ public class GameManager : MonoBehaviour
 
     public void FoodColect(){
         FoodCollected++;
-        Debug.Log("Food Collected");
     }
 }

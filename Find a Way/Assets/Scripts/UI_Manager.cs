@@ -95,6 +95,9 @@ public class UI_Manager : MonoBehaviour
     public void AddTime() {
         time+= 10;
     }
+    public void RemoveTime() {
+        time-= 5;
+    }
 
     public void Restart() {
          SceneManager.LoadScene(1, LoadSceneMode.Single);
