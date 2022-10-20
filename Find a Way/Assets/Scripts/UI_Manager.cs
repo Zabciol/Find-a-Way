@@ -8,6 +8,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject YouLoseText;
     public TextMeshProUGUI Timer;
+    public TextMeshProUGUI YouWonText;
     public float time;
     float seconds;
     float minutes;
@@ -18,6 +19,7 @@ public class UI_Manager : MonoBehaviour
         Instance = this;
         PauseUI =  GameObject.Find("ButtonPause");
         YouLoseText = GameObject.Find("YouLoseTEXT");
+        YouWonText = GameObject.Find("YouWonText").GetComponent<TextMeshProUGUI>();
     }
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class UI_Manager : MonoBehaviour
 
          Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
          time = 30;
+         YouWonText.text = "";
     }
 
     // Update is called once per frame
@@ -56,6 +59,12 @@ public class UI_Manager : MonoBehaviour
         Time.timeScale = 0;
         YouLoseText.SetActive(true);
     }
+
+    public void YouWonDisplay(){
+        Time.timeScale = 0;
+        YouWonText.text = "YOU WON";
+    }
+
 
     public void TimeUpdate(){
         if(time > 0)

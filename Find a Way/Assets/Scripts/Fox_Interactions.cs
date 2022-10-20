@@ -26,6 +26,11 @@ public class Fox_Interactions : MonoBehaviour
             Debug.Log("Collide With Car");
             UI_Manager.Instance.YouLoseDisplay();
         }
+        if(other.gameObject.tag == "Brother")
+        {
+            Debug.Log("WIN");
+            
+        }
        
 
 
