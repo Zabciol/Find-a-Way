@@ -7,6 +7,11 @@ public class UI_Manager : MonoBehaviour
 {
     public GameObject PauseUI;
     public GameObject YouLoseText;
+    public TextMeshProUGUI Timer;
+    public float time;
+    float seconds;
+    float minutes;
+
     public static UI_Manager Instance;
 
      private void Awake() {
@@ -19,11 +24,15 @@ public class UI_Manager : MonoBehaviour
     {
          PauseUI.SetActive(false);
          YouLoseText.SetActive(false);
+
+         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
+         time = 30;
     }
 
     // Update is called once per frame
     void Update()
     {
+        TimeUpdate();
         if(Input.GetKeyDown(KeyCode.Escape)){
             if(PauseUI.activeInHierarchy)
             {
@@ -47,4 +56,31 @@ public class UI_Manager : MonoBehaviour
         Time.timeScale = 0;
         YouLoseText.SetActive(true);
     }
+
+    public void TimeUpdate(){
+        if(time > 0)
+        {
+            time -= Time.deltaTime;
+            TimeDisplay(time);
+        }
+        else{
+            YouLoseText.SetActive(true);
+            Time.timeScale = 0;
+            Timer.text = "00:00";
+        }
+    }
+
+    public void  TimeDisplay(float time)
+    {
+        seconds = Mathf.FloorToInt(time % 60);
+        minutes = Mathf.FloorToInt(time / 60);
+        string TimeFixed = string.Format("{0:00}:{1:00}",minutes,seconds);
+        Timer.text = TimeFixed;   
+    }
+
+    public void AddTime() {
+        time+= 10;
+    }
+    
 }
+
