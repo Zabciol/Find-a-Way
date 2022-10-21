@@ -12,6 +12,7 @@ public class UI_Manager : MonoBehaviour
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI YouWonText;
     public Animator FadeImageAnimate;
+    public Animator FadeBlackAnimate;
     public float time;
     float seconds;
     float minutes;
@@ -35,6 +36,7 @@ public class UI_Manager : MonoBehaviour
         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         time = 30;
         YouWonText.text = "";
+        RestartBtn.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class UI_Manager : MonoBehaviour
 
     public void Resume(){
         PauseUI.SetActive(false);
+        RestartBtn.SetActive(falses);
         Time.timeScale = 1;
     }
 

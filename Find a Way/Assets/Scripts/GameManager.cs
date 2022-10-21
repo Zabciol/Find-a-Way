@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
          UI_Manager.Instance.FadeIn();
-        TotalFood = GameObject.FindGameObjectsWithTag("Food").Length;
+         TotalFood = GameObject.FindGameObjectsWithTag("Food").Length;
          Debug.Log("TotalFood");
     }
 
