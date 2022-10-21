@@ -9,6 +9,8 @@ public class UI_Manager : MonoBehaviour
     public GameObject PauseUI;
     public GameObject YouLoseText;
     public GameObject RestartBtn;
+    public GameObject BackToMenuBtn;
+    public GameObject BlackBackground;
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI YouWonText;
     public Animator FadeImageAnimate;
@@ -30,13 +32,15 @@ public class UI_Manager : MonoBehaviour
         YouLoseText = GameObject.Find("YouLoseTEXT");
         RestartBtn = GameObject.Find("RestartBtn");
         YouWonText = GameObject.Find("YouWonText").GetComponent<TextMeshProUGUI>();
+        BackToMenuBtn = GameObject.Find("BackToMenuBtn");
+        BlackBackground = GameObject.Find("BlackBackground");
         PauseUI.SetActive(false);
         YouLoseText.SetActive(false);
         RestartBtn.SetActive(false);
         Timer = GameObject.Find("Timer").GetComponent<TextMeshProUGUI>();
         time = 30;
         YouWonText.text = "";
-        RestartBtn.SetActive(false);
+        MenuHide();
     }
 
     // Update is called once per frame
@@ -46,33 +50,28 @@ public class UI_Manager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape)){
             if(PauseUI.activeInHierarchy)
             {
-                Resume();
+                PauseUI.SetActive(false);
+                MenuHide();
+                Time.timeScale = 1;
             }
             else
             {
                 PauseUI.SetActive(true);
-                RestartBtn.SetActive(true);
+                MenuDisplay();
                 Time.timeScale = 0;
             }
          }
          
     }
 
-    public void Resume(){
-        PauseUI.SetActive(false);
-        RestartBtn.SetActive(falses);
-        Time.timeScale = 1;
-    }
-
     public void YouLoseDisplay(){
-        Time.timeScale = 0;
         YouLoseText.SetActive(true);
-        RestartBtn.SetActive(true);
+        MenuDisplay();
     }
 
     public void YouWonDisplay(){
         YouWonText.text = "YOU WON";
-        Time.timeScale = 0;
+        MenuDisplay();
     }
 
 
@@ -84,9 +83,24 @@ public class UI_Manager : MonoBehaviour
         }
         else{
             YouLoseText.SetActive(true);
-            Time.timeScale = 0;
+            MenuDisplay();
             Timer.text = "00:00";
         }
+    }
+    public void MenuDisplay() {
+         RestartBtn.SetActive(true);
+         BackToMenuBtn.SetActive(true);
+         Time.timeScale = 0;
+         BlackBackground.SetActive(true);
+    }
+
+    public void MenuHide(){
+        YouWonText.text = "";
+        YouLoseText.SetActive(false);
+        RestartBtn.SetActive(false);
+        BackToMenuBtn.SetActive(false);
+        Time.timeScale = 1;
+        BlackBackground.SetActive(false);
     }
 
     public void  TimeDisplay(float time)
@@ -111,6 +125,10 @@ public class UI_Manager : MonoBehaviour
     
     public void FadeIn() {
         FadeImageAnimate.Play("");
+    }
+    public void BackToMenu(){
+         SceneManager.LoadScene(0, LoadSceneMode.Single);
+         //Time.timeScale = 1;
     }
 }
 
