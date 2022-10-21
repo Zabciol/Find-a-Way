@@ -11,6 +11,7 @@ public class UI_Manager : MonoBehaviour
     public GameObject RestartBtn;
     public TextMeshProUGUI Timer;
     public TextMeshProUGUI YouWonText;
+    public Animator FadeImageAnimate;
     public float time;
     float seconds;
     float minutes;
@@ -48,6 +49,7 @@ public class UI_Manager : MonoBehaviour
             else
             {
                 PauseUI.SetActive(true);
+                RestartBtn.SetActive(true);
                 Time.timeScale = 0;
             }
          }
@@ -104,5 +106,8 @@ public class UI_Manager : MonoBehaviour
          Time.timeScale = 1;
     }
     
+    public void FadeIn() {
+        FadeImageAnimate.Play("");
+    }
 }
 

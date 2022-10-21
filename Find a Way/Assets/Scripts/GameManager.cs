@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         UI_Manager.Instance.FadeIn();
         TotalFood = GameObject.FindGameObjectsWithTag("Food").Length;
          Debug.Log("TotalFood");
     }
@@ -30,5 +31,9 @@ public class GameManager : MonoBehaviour
 
     public void FoodColect(){
         FoodCollected++;
+    }
+
+    public void ExitGame() {
+        Application.Quit();
     }
 }
